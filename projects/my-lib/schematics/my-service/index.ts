@@ -34,9 +34,8 @@ export function myService(options: MyServiceSchema): Rule {
     const host = createHost(tree);
     const { workspace } = await workspaces.readWorkspace('/', host);
 
-
     if (!options.project) {
-      options.project = workspace.extensions.defaultProject;
+      options.project = workspace.extensions.defaultProject as string;
     }
 
     const project = workspace.projects.get(options.project);
